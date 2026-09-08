@@ -103,11 +103,3 @@ Chrome como Flutter Web. Si en el futuro cambias el endpoint por una API
 propia, recuerda: **CORS se configura en el servidor**, no deshabilitando
 seguridad del navegador.
 
-## Próximos pasos sugeridos
-
-Cuando quieras, podemos:
-- Tomar las capturas de pantalla que pide la sección 11.1 del PDF.
-- Redactar el informe PDF de 1–2 páginas (sección 11.2).
-- Implementar alguna de las extensiones opcionales (pantalla de detalle,
-  botón de cerrar sesión ya incluido en el AppBar de Home, diseño
-  responsivo con `LayoutBuilder`/`MediaQuery`, etc.).
