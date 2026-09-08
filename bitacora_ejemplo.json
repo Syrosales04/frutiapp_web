@@ -1,0 +1,12 @@
+[
+  {
+    "usuario": "admin@frutiapp.com",
+    "fechaHora": "2026-09-08T08:10:00.000Z",
+    "resultado": "AUTORIZADO"
+  },
+  {
+    "usuario": "usuario1@correo.com",
+    "fechaHora": "2026-09-08T08:15:00.000Z",
+    "resultado": "RECHAZADO"
+  }
+]

@@ -3,7 +3,6 @@
 // Verifica que la pantalla de login se construya correctamente y que
 // la validación de formulario funcione como se espera.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:frutiapp_web/main.dart';

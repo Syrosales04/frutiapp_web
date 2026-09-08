@@ -2,7 +2,21 @@
 
 Proyecto del Laboratorio 1 – IF0009 Desarrollo de Software IV (Flutter Web).
 
-## Contenido de este paquete
+## Funcionalidades
+
+- Login con validación de correo y contraseña, mostrar/ocultar contraseña y mensajes de acceso autorizado o rechazado.
+- Opción **Recordarme** usando `SharedPreferences`; nunca se almacena la contraseña.
+- Bitácora de intentos con usuario, fecha/hora y resultado.
+- Consulta de bitácora, exportación a `bitacora_acceso.json` e importación de JSON con manejo de errores.
+
+Las credenciales simuladas para probar el acceso autorizado son:
+
+- Usuario: `admin@frutiapp.com`
+- Contraseña: `123456`
+
+También se incluye [bitacora_ejemplo.json](bitacora_ejemplo.json).
+
+## Contenido del proyecto
 
 Este paquete **no es un proyecto Flutter completo** (no incluye las carpetas
 `android/`, `ios/`, `linux/`, ni los íconos/`favicon.png` binarios que genera
@@ -63,13 +77,11 @@ frutiapp_web/
    ```
 
 6. **Prueba el flujo**:
-   - Escribe un correo sin `@` o una contraseña de menos de 6 caracteres →
-     debe mostrar el error de validación.
-   - Escribe un correo válido (ej. `test@correo.com`) y una contraseña de
-     al menos 6 caracteres → pulsa **Ingresar** → navega a la pantalla
-     **Home**, que carga los productos desde
-     `https://jsonplaceholder.typicode.com/posts` (mapeando
-     `title → nombre` y `id * 100 → precio`).
+    - Pulsa **Ingresar** con campos vacíos para comprobar la validación.
+    - Usa las credenciales de demostración para entrar al catálogo.
+    - Activa **Recordarme**, reinicia la aplicación y comprueba que el usuario aparezca.
+    - Abre la bitácora, exporta el JSON y vuelve a importarlo.
+    - Selecciona un JSON inválido para comprobar el mensaje de error controlado.
 
 7. **Genera la versión de producción** (Parte F del laboratorio):
    ```bash

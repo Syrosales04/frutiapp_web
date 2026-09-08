@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+
 import '../models/producto.dart';
 import '../services/producto_service.dart';
+import '../services/access_log_service.dart';
+import 'bitacora_page.dart';
 
 /// Pantalla 2: Catálogo de productos.
 ///
 /// Consume el endpoint público mediante [ProductoService] y muestra
 /// el estado de carga, error o la lista final de productos.
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final AccessLogService logService;
+
+  const HomePage({super.key, required this.logService});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -47,6 +52,18 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Recargar',
           ),
           IconButton(
+            icon: const Icon(Icons.history),
+            tooltip: 'Ver bitácora',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => BitacoraPage(logService: widget.logService),
+                ),
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.logout),
             onPressed: _cerrarSesion,
             tooltip: 'Cerrar sesión',
@@ -58,9 +75,7 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           // Estado de carga
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
 
           // Manejo de errores: nunca se deja la pantalla en blanco.
@@ -71,8 +86,11 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.error_outline,
-                        color: Colors.red, size: 48),
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 48,
+                    ),
                     const SizedBox(height: 12),
                     const Text(
                       'No se pudo cargar la información.',
@@ -93,9 +111,7 @@ class _HomePageState extends State<HomePage> {
           final productos = snapshot.data ?? [];
 
           if (productos.isEmpty) {
-            return const Center(
-              child: Text('No hay productos disponibles.'),
-            );
+            return const Center(child: Text('No hay productos disponibles.'));
           }
 
           // Lista de productos
